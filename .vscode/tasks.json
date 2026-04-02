@@ -1,0 +1,45 @@
+{
+  // VS Code Tasks (-pvc)
+  // Rely on the latexmk and XeLaTeX (MiKTeX/TeX Live) already installed on this machine.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "LaTeX: Build main.tex",
+      "type": "shell",
+      "command": "latexmk",
+      "args": [
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-outdir=out",
+        "main.tex"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "LaTeX: Watch main.tex",
+      "type": "shell",
+      "command": "latexmk",
+      "args": [
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-outdir=out",
+        "-pvc",
+        "main.tex"
+      ],
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "LaTeX: Clean",
+      "type": "shell",
+      "command": "latexmk",
+      "args": ["-C", "-outdir=out"],
+      "problemMatcher": []
+    }
+  ]
+}

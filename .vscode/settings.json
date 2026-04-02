@@ -1,0 +1,43 @@
+{
+  // Let LaTeX Workshop compile automatically when saving
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  // latexmk + xelatex stack, setting ./out for intermediate files and output PDF
+  "latex-workshop.latex.outDir": "out",
+  "latex-workshop.latex.recipe.default": "lastUsed",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (xelatex)",
+      "tools": ["latexmk_xelatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk_xelatex",
+      "command": "latexmk",
+      "args": [
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-outdir=%OUTDIR%",
+        "-e", "$post_decode_hook = 'copy /y %D .\\main.pdf'",
+        "%DOC%"
+      ]
+    }
+  ],
+  // Setting main.tex as the root file for LaTeX Workshop
+  "latex-workshop.latex.rootFile.useSubFile": false,
+  "latex-workshop.latex.rootFile.doNotPrompt": true,
+  "latex-workshop.latex.search.rootFiles.include": [
+    "main.tex"
+  ],
+  // Use the built-in PDF viewer in a new tab
+  "latex-workshop.view.pdf.viewer": "tab",
+  // Exclude the out/ directory and intermediate files from search and file tree noise
+  // "files.exclude": {
+  //   "out": true
+  // },
+  "search.exclude": {
+    "out/**": true
+  }
+}
